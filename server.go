@@ -14,6 +14,9 @@ func main() {
 func Hello(w http.ResponseWriter, r *http.Request) {
 	hostname, err := os.Hostname()
 
+	name := os.Getenv("NAME")
+	age := os.Getenv("AGE")
+
 	if err != nil {
 		fmt.Println("Error to get hostname", err)
 	}
@@ -23,5 +26,12 @@ func Hello(w http.ResponseWriter, r *http.Request) {
 	podInfo += hostname
 	podInfo += "</h2>"
 
-	w.Write([]byte("<h1>Hello Full Cycle Rocks!!!</h1>" + podInfo))
+	var helloMessage string
+	helloMessage += "<p>Hello, I'm "
+	helloMessage += name
+	helloMessage += " and have "
+	helloMessage += age
+	helloMessage += " old years.</p>"
+
+	w.Write([]byte("<h1>Hello Full Cycle Rocks!!!</h1>" + podInfo + helloMessage))
 }
