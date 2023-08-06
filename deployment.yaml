@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: goserver
-          image: vaniltonalv3sfilho/hello-go:v7
+          image: vaniltonalv3sfilho/hello-go:v8.2
           # env:
           #   - name: NAME
           #     valueFrom:
@@ -31,6 +31,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: goserver-env
+            - secretRef:
+                name: goserver-secret
           volumeMounts:
             - mountPath: "/go/myfamily"
               name: config
