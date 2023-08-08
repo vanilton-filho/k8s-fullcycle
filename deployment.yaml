@@ -16,7 +16,15 @@ spec:
     spec:
       containers:
         - name: goserver
-          image: vaniltonalv3sfilho/hello-go:v8.2
+          image: vaniltonalv3sfilho/hello-go:v9
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8000
+            periodSeconds: 5
+            failureThreshold: 3
+            timeoutSeconds: 1
+            successThreshold: 1
           # env:
           #   - name: NAME
           #     valueFrom:
