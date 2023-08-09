@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: goserver
-          image: vaniltonalv3sfilho/hello-go:v10
+          image: vaniltonalv3sfilho/hello-go:v11
           readinessProbe:
             httpGet:
               path: /healthz
@@ -24,14 +24,15 @@ spec:
             periodSeconds: 3
             failureThreshold: 1
             initialDelaySeconds: 10
-          # livenessProbe:
-          #   httpGet:
-          #     path: /healthz
-          #     port: 8000
-          #   periodSeconds: 5
-          #   failureThreshold: 3
-          #   timeoutSeconds: 1
-          #   successThreshold: 1
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8000
+            periodSeconds: 5
+            failureThreshold: 1
+            timeoutSeconds: 1
+            successThreshold: 1
+            initialDelaySeconds: 15
           # env:
           #   - name: NAME
           #     valueFrom:
