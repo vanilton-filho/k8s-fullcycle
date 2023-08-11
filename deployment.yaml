@@ -18,6 +18,14 @@ spec:
         - name: goserver
           image: vaniltonalv3sfilho/hello-go:v11
 
+          resources:
+            requests:
+              cpu: 100m
+              memory: 20Mi
+            limits:
+              cpu: 500m
+              memory: 25Mi
+
           startupProbe:
             httpGet:
               path: /healthz
@@ -32,7 +40,7 @@ spec:
             periodSeconds: 3
             failureThreshold: 1
             # initialDelaySeconds: 10
-            
+
           livenessProbe:
             httpGet:
               path: /healthz
