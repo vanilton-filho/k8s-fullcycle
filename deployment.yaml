@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: goserver
-          image: vaniltonalv3sfilho/hello-go:v12
+          image: vaniltonalv3sfilho/hello-go:v13
 
           resources:
             requests:
@@ -67,13 +67,21 @@ spec:
             - secretRef:
                 name: goserver-secret
           volumeMounts:
-            - mountPath: "/go/myfamily"
-              name: config
-              readOnly: true
+            # - mountPath: "/go/myfamily"
+            #   name: config
+            #   readOnly: true
+            - mountPath: "/go/pvc"
+              name: goserver-volume
+
       volumes:
-        - name: config
-          configMap:
-            name: configmap-family
-            items:
-            - key: members
-              path: "family.txt"
+        - name: goserver-volume
+          persistentVolumeClaim:
+            claimName: goserver-pvc
+        # - name: config
+        #   configMap:
+        #     name: configmap-family
+        #     items:
+        #     - key: members
+        #       path: "family.txt"
+          
+          
