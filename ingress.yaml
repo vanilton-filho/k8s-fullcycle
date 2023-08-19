@@ -2,17 +2,17 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress-host
-  annotations:
-    kubernetes.io/ingressClassName: "nginx"
 spec:
+  ingressClassName: nginx
   rules:
-    - host: ingress.fullcycle.com.br
-      http:
-        paths:
-        - pathType: Prefix
-          path: "/admin"
-          backend:
-            service: 
-              name: goserver-service
-              port:
-                number: 80
+  - host: ingress.ingressohub.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: /app
+        backend:
+          service: 
+            name: goserver-service
+            port:
+              number: 80
+      

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: goserver
-          image: vaniltonalv3sfilho/hello-go:v13
+          image: vaniltonalv3sfilho/hello-go:v14
 
           resources:
             requests:

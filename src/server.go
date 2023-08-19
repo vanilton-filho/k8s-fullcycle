@@ -15,7 +15,7 @@ func main() {
 	http.HandleFunc("/", Hello)
 	http.HandleFunc("/configmap", ConfigMap)
 	http.HandleFunc("/secret", Secret)
-	http.HandleFunc("/healthz", Healthz)
+	http.HandleFunc("/app/healthz", Healthz)
 
 	http.ListenAndServe(":8000", nil)
 }
