@@ -4,11 +4,12 @@ metadata:
   name: goserver
   labels:
     app: goserver
+  namespace: dev
 spec:
   selector:
     matchLabels:
       app: goserver
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
