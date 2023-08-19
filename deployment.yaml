@@ -50,33 +50,33 @@ spec:
             timeoutSeconds: 1
             successThreshold: 1
             # initialDelaySeconds: 15
-          # env:
-          #   - name: NAME
-          #     valueFrom:
-          #       configMapKeyRef:
-          #         name: goserver-env
-          #         key: NAME
-          #   - name: AGE
-          #     valueFrom:
-          #       configMapKeyRef:
-          #         name: goserver-env
-          #         key: AGE
-          envFrom:
-            - configMapRef:
-                name: goserver-env
-            - secretRef:
-                name: goserver-secret
-          volumeMounts:
-            # - mountPath: "/go/myfamily"
-            #   name: config
-            #   readOnly: true
-            - mountPath: "/go/pvc"
-              name: goserver-volume
+          env:
+            - name: NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: goserver-env
+                  key: NAME
+            - name: AGE
+              valueFrom:
+                configMapKeyRef:
+                  name: goserver-env
+                  key: AGE
+          # envFrom:
+          #   - configMapRef:
+          #       name: goserver-env
+          #   - secretRef:
+          #       name: goserver-secret
+          # volumeMounts:
+          #   # - mountPath: "/go/myfamily"
+          #   #   name: config
+          #   #   readOnly: true
+          #   - mountPath: "/go/pvc"
+          #     name: goserver-volume
 
-      volumes:
-        - name: goserver-volume
-          persistentVolumeClaim:
-            claimName: goserver-pvc
+      # volumes:
+      #   - name: goserver-volume
+      #     persistentVolumeClaim:
+      #       claimName: goserver-pvc
         # - name: config
         #   configMap:
         #     name: configmap-family
